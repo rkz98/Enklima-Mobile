@@ -1,10 +1,9 @@
 /* eslint-disable linebreak-style */
 import { put, call } from 'redux-saga/effects';
-import api from '~/services/loginApi';
 import Actions from './actions';
 
-export function* loginRequest(action) {
-  const response = yield call(api.loginRequest, action.login);
+export function* loginRequest(api, { login }) {
+  const response = yield call(api.loginRequest, login);
   if (response.ok) {
     yield put(Actions.Creators.loginSuccess(response.data));
   } else {
