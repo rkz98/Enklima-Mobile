@@ -3,11 +3,13 @@
 import { createActions } from 'reduxsauce';
 
 const { Types, Creators } = createActions({
-  loginRequest: ['login'],
-  loginSuccess: ['login'],
-  loginFailure: ['error'],
-  logout: null,
-  resetStatus: null,
+  reportCreate: ['report'],
+  reportCreateSuccess: ['report'],
+  reportCreateFailure: ['error'],
+
+  reportsRequest: null,
+  reportsRequestSuccess: ['reports'],
+  reportsRequestFailure: ['error'],
 }, {});
 
 const Actions = {

@@ -1,5 +1,6 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable arrow-body-style */
+
 import { createReducer } from 'reduxsauce';
 import Types from './types';
 

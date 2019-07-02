@@ -11,51 +11,30 @@ export default StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: colors.white,
   },
-  loginForm: {
+  buttons: {
     justifyContent: 'center',
     flexDirection: 'column',
-    height: responsiveHeight(40),
+    alignItems: 'center',
+    height: responsiveHeight(15),
     backgroundColor: colors.green,
-    marginHorizontal: responsiveWidth(5),
+    margin: responsiveWidth(5),
     borderRadius: 20,
   },
-  eachForm: {
-    justifyContent: 'center',
-    flexDirection: 'column',
-    backgroundColor: colors.white,
-    margin: responsiveWidth(5),
+  buttonsTexts: {
+    fontSize: fonts.big,
+    color: colors.white,
   },
-  input: {
-    height: responsiveHeight(10),
-    color: colors.black,
-    fontSize: fonts.regular,
-    paddingTop: 10,
-    paddingBottom: 10,
-    paddingLeft: 20,
-    paddingRight: 20,
-  },
-  submit: {
+  logout: {
     marginTop: responsiveHeight(10),
     justifyContent: 'center',
     flexDirection: 'row',
     alignItems: 'center',
     height: responsiveHeight(10),
-    backgroundColor: colors.black,
+    backgroundColor: colors.red,
     marginHorizontal: responsiveWidth(5),
   },
-  submitText: {
+  logoutText: {
     fontSize: fonts.big,
     color: colors.white,
-  },
-  enklima: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: responsiveHeight(10),
-    marginHorizontal: responsiveWidth(5),
-  },
-  enklimaText: {
-    fontSize: fonts.bigger,
-    color: colors.black,
   },
 });

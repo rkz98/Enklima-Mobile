@@ -4,6 +4,7 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/prefer-stateless-function */
+
 import React from 'react';
 import { Text, View, StatusBar, TextInput, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
@@ -19,14 +20,13 @@ class Main extends React.Component {
     super(props);
     this.state = {
       login: {
-        username: 'test',
-        password: 'test',
+        username: '',
+        password: '',
       },
     };
   }
 
   componentDidMount() {
-    this.props.loginActions.loginRequest(this.state.login);
   }
 
   setUsername = (username) => {
@@ -56,6 +56,23 @@ class Main extends React.Component {
     );
   }
 
+  loginRequest = async () => {
+    this.props.navigation.navigate('Menu');
+    /*if (this.props.loginState.status === 'SUCCESS') {
+      this.props.navigation.navigate('Menu');
+    } else if (this.props.loginState.status === 'ONGOING') {
+      Alert.alert(
+        'Please wait',
+        'We are trying to verify your login credentials',
+      );
+    } else {
+      Alert.alert(
+        'Login failure',
+        'Please verify your credentials.',
+      );
+    }*/
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -83,13 +100,17 @@ class Main extends React.Component {
             />
           </View>
         </View>
-        <TouchableOpacity style={styles.submit}>
+        <TouchableOpacity style={styles.submit} onPress={this.loginRequest}>
           <Text style={styles.submitText}>Login</Text>
         </TouchableOpacity>
       </View>
     );
   }
 }
+
+Main.navigationOptions = {
+  title: 'Main',
+};
 
 const mapStateToProps = (state) => {
   return {

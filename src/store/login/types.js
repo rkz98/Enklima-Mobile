@@ -1,4 +1,5 @@
 /* eslint-disable linebreak-style */
+
 import { createTypes } from 'reduxsauce';
 
 export default createTypes(`
