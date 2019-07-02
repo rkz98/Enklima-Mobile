@@ -27,6 +27,9 @@ class Menu extends Component {
       return (
         <View style={styles.container}>
           <StatusBar barStyle="light-content" backgroundColor={colors.green} />
+          <TouchableOpacity style={styles.menu}>
+            <Text style={styles.menuText}>Menu</Text>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.buttons}>
             <Text style={styles.buttonsTexts}>Consult Reports</Text>
           </TouchableOpacity>

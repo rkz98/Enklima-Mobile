@@ -8,7 +8,7 @@ import fonts from '~/themes/fonts';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-around',
     backgroundColor: colors.white,
   },
   buttons: {
@@ -17,22 +17,79 @@ export default StyleSheet.create({
     alignItems: 'center',
     height: responsiveHeight(15),
     backgroundColor: colors.green,
-    margin: responsiveWidth(5),
+    marginHorizontal: responsiveWidth(5),
     borderRadius: 20,
   },
   buttonsTexts: {
     fontSize: fonts.big,
     color: colors.white,
   },
-  permission: {
+  createReport: {
     justifyContent: 'center',
     flexDirection: 'column',
     alignItems: 'center',
-    height: responsiveHeight(15),
-    margin: responsiveHeight(2),
   },
-  permissionText: {
+  createReportText: {
     fontSize: fonts.bigger,
+    color: colors.black,
+  },
+  back: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: responsiveHeight(10),
+    backgroundColor: colors.black,
+    marginHorizontal: responsiveWidth(5),
+  },
+  backText: {
+    fontSize: fonts.big,
+    color: colors.white,
+  },
+  save: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: responsiveHeight(10),
+    backgroundColor: colors.green,
+    marginHorizontal: responsiveWidth(5),
+  },
+  saveText: {
+    fontSize: fonts.big,
+    color: colors.white,
+  },
+  form: {
+    justifyContent: 'center',
+    flexDirection: 'column',
+    height: responsiveHeight(60),
+    backgroundColor: colors.green,
+    marginHorizontal: responsiveWidth(5),
+    borderRadius: 20,
+  },
+  eachForm: {
+    justifyContent: 'center',
+    flexDirection: 'column',
+    backgroundColor: colors.white,
+    margin: responsiveWidth(5),
+  },
+  input: {
+    height: responsiveHeight(10),
+    color: colors.black,
+    fontSize: fonts.regular,
+    paddingTop: 10,
+    paddingBottom: 10,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  insertImage: {
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
+    height: responsiveHeight(10),
+    backgroundColor: colors.white,
+    margin: responsiveWidth(5),
+  },
+  insertImageText: {
+    fontSize: fonts.regular,
     color: colors.black,
   },
 });
