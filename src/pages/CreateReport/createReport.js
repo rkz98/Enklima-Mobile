@@ -6,8 +6,8 @@
 /* eslint-disable react/destructuring-assignment */
 
 import React, { Component } from 'react';
-import { View, StatusBar, Text, TextInput } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, StatusBar, Text, TextInput, ActivityIndicator } from 'react-native';
+import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styles from './createReportStyles';
@@ -22,8 +22,9 @@ class CreateReport extends Component {
         title: '',
         report: '',
         place: '',
-        img: '',
+        img: this.props.navigation.getParam('img') !== undefined ? this.props.navigation.getParam('img') : '',
       },
+      thereIsImage: this.props.navigation.getParam('img') !== undefined,
     };
   }
 
@@ -47,11 +48,27 @@ class CreateReport extends Component {
 
   setPlace = (place) => {
     this.setState({
-      place: {
-        ...this.state.place,
+      report: {
+        ...this.state.report,
         place,
       },
     });
+  }
+
+  createReport = () => {
+    if (this.state.report.title !== '') {
+      if (this.state.report.report !== '') {
+        if (this.state.report.place !== '') {
+          if (this.state.report.img !== '') {
+            this.props.reportsActions.reportCreate(this.state.report);
+          }
+        }
+      }
+    }
+  }
+
+  camera = () => {
+    this.props.navigation.navigate('Camera');
   }
 
   back = () => {
@@ -62,16 +79,17 @@ class CreateReport extends Component {
     return (
       <View style={styles.container}>
         <StatusBar barStyle="light-content" backgroundColor={colors.green} />
-        <TouchableOpacity style={styles.createReport}>
-          <Text style={styles.createReportText}>Create Report</Text>
-        </TouchableOpacity>
-        <View style={styles.form}>
+        <ScrollView contentContainerStyle={styles.form}>
+          <TouchableOpacity style={styles.insertImage} onPress={this.camera}>
+            <Text style={styles.insertImageText}>{this.state.report.img ? this.state.report.img.uri : 'Insert Image'}</Text>
+          </TouchableOpacity>
           <View style={styles.eachForm}>
             <TextInput
               style={styles.input}
               onChangeText={title => this.setTitle(title)}
               value={this.state.report.title}
               placeholder="Title"
+              editable={this.state.thereIsImage}
             />
           </View>
           <View style={styles.eachForm}>
@@ -80,6 +98,7 @@ class CreateReport extends Component {
               onChangeText={report => this.setReport(report)}
               value={this.state.report.report}
               placeholder="Report"
+              editable={this.state.thereIsImage}
             />
           </View>
           <View style={styles.eachForm}>
@@ -88,14 +107,15 @@ class CreateReport extends Component {
               onChangeText={place => this.setPlace(place)}
               value={this.state.report.place}
               placeholder="Place"
+              editable={this.state.thereIsImage}
             />
           </View>
-          <TouchableOpacity style={styles.insertImage}>
-            <Text style={styles.insertImageText}>Insert Image</Text>
-          </TouchableOpacity>
-        </View>
-        <TouchableOpacity style={styles.save}>
-          <Text style={styles.saveText}>Save</Text>
+        </ScrollView>
+        <TouchableOpacity style={styles.save} onPress={this.createReport}>
+          {this.props.reportsState.status === 'ONGOING'
+            ? <ActivityIndicator size="small" color={colors.black} animating />
+            : <Text style={styles.saveText}>Save</Text>
+          }
         </TouchableOpacity>
         <TouchableOpacity style={styles.back} onPress={this.back}>
           <Text style={styles.backText}>Back</Text>

@@ -8,7 +8,7 @@ import fonts from '~/themes/fonts';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     backgroundColor: colors.white,
   },
   buttons: {
@@ -17,7 +17,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     height: responsiveHeight(15),
     backgroundColor: colors.green,
-    marginHorizontal: responsiveWidth(5),
+    margin: responsiveWidth(5),
     borderRadius: 20,
   },
   buttonsTexts: {
@@ -30,19 +30,10 @@ export default StyleSheet.create({
     alignItems: 'center',
     height: responsiveHeight(10),
     backgroundColor: colors.red,
-    marginHorizontal: responsiveWidth(5),
+    margin: responsiveWidth(5),
   },
   logoutText: {
     fontSize: fonts.big,
     color: colors.white,
-  },
-  menu: {
-    justifyContent: 'center',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  menuText: {
-    fontSize: fonts.bigger,
-    color: colors.black,
   },
 });

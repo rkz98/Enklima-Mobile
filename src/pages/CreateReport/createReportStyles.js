@@ -8,7 +8,7 @@ import fonts from '~/themes/fonts';
 export default StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     backgroundColor: colors.white,
   },
   buttons: {
@@ -17,52 +17,19 @@ export default StyleSheet.create({
     alignItems: 'center',
     height: responsiveHeight(15),
     backgroundColor: colors.green,
-    marginHorizontal: responsiveWidth(5),
+    margin: responsiveWidth(5),
     borderRadius: 20,
   },
   buttonsTexts: {
     fontSize: fonts.big,
     color: colors.white,
   },
-  createReport: {
-    justifyContent: 'center',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  createReportText: {
-    fontSize: fonts.bigger,
-    color: colors.black,
-  },
-  back: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: responsiveHeight(10),
-    backgroundColor: colors.black,
-    marginHorizontal: responsiveWidth(5),
-  },
-  backText: {
-    fontSize: fonts.big,
-    color: colors.white,
-  },
-  save: {
-    justifyContent: 'center',
-    flexDirection: 'row',
-    alignItems: 'center',
-    height: responsiveHeight(10),
-    backgroundColor: colors.green,
-    marginHorizontal: responsiveWidth(5),
-  },
-  saveText: {
-    fontSize: fonts.big,
-    color: colors.white,
-  },
   form: {
     justifyContent: 'center',
     flexDirection: 'column',
-    height: responsiveHeight(60),
+    height: responsiveHeight(65),
     backgroundColor: colors.green,
-    marginHorizontal: responsiveWidth(5),
+    margin: responsiveWidth(5),
     borderRadius: 20,
   },
   eachForm: {
@@ -91,5 +58,29 @@ export default StyleSheet.create({
   insertImageText: {
     fontSize: fonts.regular,
     color: colors.black,
+  },
+  back: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: responsiveHeight(10),
+    backgroundColor: colors.black,
+    margin: responsiveWidth(5),
+  },
+  backText: {
+    fontSize: fonts.big,
+    color: colors.white,
+  },
+  save: {
+    justifyContent: 'center',
+    flexDirection: 'row',
+    alignItems: 'center',
+    height: responsiveHeight(10),
+    backgroundColor: colors.green,
+    marginHorizontal: responsiveWidth(5),
+  },
+  saveText: {
+    fontSize: fonts.big,
+    color: colors.white,
   },
 });
