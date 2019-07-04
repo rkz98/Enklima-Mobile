@@ -9,7 +9,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: colors.black,
   },
   buttons: {
     justifyContent: 'center',
@@ -28,7 +28,7 @@ export default StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'column',
     height: responsiveHeight(65),
-    backgroundColor: colors.green,
+    backgroundColor: colors.black,
     margin: responsiveWidth(5),
     borderRadius: 20,
   },
@@ -37,9 +37,10 @@ export default StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: colors.white,
     margin: responsiveWidth(5),
+    borderRadius: 20,
   },
   input: {
-    height: responsiveHeight(10),
+    height: responsiveHeight(8),
     color: colors.black,
     fontSize: fonts.regular,
     paddingTop: 10,
@@ -52,12 +53,14 @@ export default StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     height: responsiveHeight(10),
-    backgroundColor: colors.white,
+    backgroundColor: colors.green,
     margin: responsiveWidth(5),
+    borderRadius: 20,
   },
   insertImageText: {
-    fontSize: fonts.regular,
-    color: colors.black,
+    fontSize: fonts.regular_2,
+    color: colors.white,
+    textAlign: 'center',
   },
   back: {
     justifyContent: 'center',
@@ -69,7 +72,7 @@ export default StyleSheet.create({
   },
   backText: {
     fontSize: fonts.big,
-    color: colors.white,
+    color: colors.green,
   },
   save: {
     justifyContent: 'center',
@@ -78,9 +81,14 @@ export default StyleSheet.create({
     height: responsiveHeight(10),
     backgroundColor: colors.green,
     marginHorizontal: responsiveWidth(5),
+    borderRadius: 20,
   },
   saveText: {
     fontSize: fonts.big,
     color: colors.white,
+  },
+  image: {
+    width: 50,
+    height: 100,
   },
 });

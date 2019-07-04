@@ -9,13 +9,13 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    backgroundColor: colors.white,
+    backgroundColor: colors.black,
   },
   loginForm: {
     justifyContent: 'center',
     flexDirection: 'column',
     height: responsiveHeight(40),
-    backgroundColor: colors.green,
+    backgroundColor: colors.black,
     marginHorizontal: responsiveWidth(5),
     borderRadius: 20,
   },
@@ -24,6 +24,7 @@ export default StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: colors.white,
     margin: responsiveWidth(5),
+    borderRadius: 20,
   },
   input: {
     height: responsiveHeight(10),
@@ -40,8 +41,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     height: responsiveHeight(10),
-    backgroundColor: colors.black,
+    backgroundColor: colors.green,
     marginHorizontal: responsiveWidth(5),
+    borderRadius: 20,
   },
   submitText: {
     fontSize: fonts.big,
@@ -56,6 +58,6 @@ export default StyleSheet.create({
   },
   enklimaText: {
     fontSize: fonts.bigger,
-    color: colors.black,
+    color: colors.green,
   },
 });

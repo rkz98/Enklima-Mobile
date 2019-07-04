@@ -5,7 +5,7 @@ import Actions from './actions';
 
 export function* loginRequest(api, { login }) {
   const response = yield call(api.loginRequest, login);
-  if (response.ok) {
+  if (response.data !== 'ERROR') {
     yield put(Actions.Creators.loginSuccess(response.data));
   } else {
     yield put(Actions.Creators.loginFailure());

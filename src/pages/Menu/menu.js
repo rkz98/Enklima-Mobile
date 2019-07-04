@@ -5,7 +5,7 @@
 /* eslint-disable react/destructuring-assignment */
 
 import React, { Component } from 'react';
-import { View, StatusBar, Text } from 'react-native';
+import { View, StatusBar, Text, Alert } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -27,11 +27,15 @@ class Menu extends Component {
       return (
         <View style={styles.container}>
           <StatusBar barStyle="light-content" backgroundColor={colors.green} />
+          <TouchableOpacity style={styles.welcome}>
+            <Text style={styles.welcomeText}>Hey, {this.props.loginState.login.name}!</Text>
+            <Text style={styles.wannaDo}>What you wanna do?</Text>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.buttons}>
-            <Text style={styles.buttonsTexts}>Consult Reports</Text>
+            <Text style={styles.buttonsText}>Consult Reports</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttons} onPress={this.registerReport}>
-            <Text style={styles.buttonsTexts}>Create Report</Text>
+            <Text style={styles.buttonsText}>Create Report</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.logout} onPress={this.logout}>
             <Text style={styles.logoutText}>Logout</Text>

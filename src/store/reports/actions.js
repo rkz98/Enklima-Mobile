@@ -10,6 +10,7 @@ const { Types, Creators } = createActions({
   reportsRequest: null,
   reportsRequestSuccess: ['reports'],
   reportsRequestFailure: ['error'],
+  resetStatus: null,
 }, {});
 
 const Actions = {

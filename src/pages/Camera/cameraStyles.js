@@ -1,9 +1,7 @@
 /* eslint-disable linebreak-style */
 
 import { StyleSheet } from 'react-native';
-import { responsiveHeight, responsiveWidth } from 'react-native-responsive-dimensions';
 import colors from '~/themes/colors';
-import fonts from '~/themes/fonts';
 
 export default StyleSheet.create({
   container: {
@@ -23,8 +21,8 @@ export default StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
+    backgroundColor: colors.green,
+    borderRadius: 20,
     padding: 15,
     paddingHorizontal: 20,
     alignSelf: 'center',
@@ -32,5 +30,6 @@ export default StyleSheet.create({
   },
   buttonText: {
     fontSize: 14,
+    color: colors.white,
   },
 });

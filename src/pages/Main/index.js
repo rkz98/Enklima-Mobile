@@ -6,14 +6,13 @@
 /* eslint-disable react/prefer-stateless-function */
 
 import React from 'react';
-import { Text, View, StatusBar, TextInput, Alert } from 'react-native';
+import { Text, View, StatusBar, TextInput, Alert, ActivityIndicator } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import styles from './indexStyles';
 import colors from '~/themes/colors';
 import loginActions from '~/store/login/actions';
-
 
 class Main extends React.Component {
   constructor(props) {
@@ -26,7 +25,20 @@ class Main extends React.Component {
     };
   }
 
-  componentDidMount() {
+  componentWillReceiveProps() {
+    setTimeout(() => {
+      if (this.props.loginState.status === 'SUCCESS') {
+        this.props.navigation.navigate('Menu');
+        this.props.loginActions.resetStatus();
+      }
+      if (this.props.loginState.status === 'FAILURE') {
+        Alert.alert(
+          'Login failure',
+          'Please verify your credentials.',
+        );
+        this.props.loginActions.resetStatus();
+      }
+    }, 1);
   }
 
   setUsername = (username) => {
@@ -56,21 +68,10 @@ class Main extends React.Component {
     );
   }
 
-  loginRequest = async () => {
-    this.props.navigation.navigate('Menu');
-    /*if (this.props.loginState.status === 'SUCCESS') {
-      this.props.navigation.navigate('Menu');
-    } else if (this.props.loginState.status === 'ONGOING') {
-      Alert.alert(
-        'Please wait',
-        'We are trying to verify your login credentials',
-      );
-    } else {
-      Alert.alert(
-        'Login failure',
-        'Please verify your credentials.',
-      );
-    }*/
+  loginRequest = () => {
+    if (this.state.login.username !== '' && this.state.login.password !== '') {
+      this.props.loginActions.loginRequest(this.state.login);
+    }
   }
 
   render() {
@@ -101,7 +102,10 @@ class Main extends React.Component {
           </View>
         </View>
         <TouchableOpacity style={styles.submit} onPress={this.loginRequest}>
-          <Text style={styles.submitText}>Login</Text>
+          {this.props.loginState.status === 'ONGOING'
+            ? <ActivityIndicator size="small" color={colors.white} animating />
+            : <Text style={styles.submitText}>Login</Text>
+          }
         </TouchableOpacity>
       </View>
     );

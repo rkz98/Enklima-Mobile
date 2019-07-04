@@ -10,7 +10,7 @@ import styles from './cameraStyles';
 export default class Camera extends Component {
   takePicture = async () => {
     if (this.camera) {
-      const options = { quality: 0.5, base64: true };
+      const options = { quality: 0.1, base64: true, pauseAfterCapture: true, fixOrientation: true };
       const data = await this.camera.takePictureAsync(options);
       Alert.alert(
         'Image capture success!',

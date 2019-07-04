@@ -6,7 +6,7 @@
 /* eslint-disable react/destructuring-assignment */
 
 import React, { Component } from 'react';
-import { View, StatusBar, Text, TextInput, ActivityIndicator } from 'react-native';
+import { View, StatusBar, Text, TextInput, ActivityIndicator, Alert, Image } from 'react-native';
 import { TouchableOpacity, ScrollView } from 'react-native-gesture-handler';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -22,10 +22,31 @@ class CreateReport extends Component {
         title: '',
         report: '',
         place: '',
+        victimsQuantity: '',
         img: this.props.navigation.getParam('img') !== undefined ? this.props.navigation.getParam('img') : '',
       },
       thereIsImage: this.props.navigation.getParam('img') !== undefined,
     };
+  }
+
+  componentWillReceiveProps() {
+    setTimeout(() => {
+      if (this.props.reportsState.statusCreate === 'SUCCESS') {
+        Alert.alert(
+          'Create report success!',
+          `Report ID: ${this.props.reportsState.report._id}`,
+          [{ text: 'OK', onPress: () => this.props.navigation.navigate('Menu') }],
+        );
+        this.props.reportsActions.resetStatus();
+      }
+      if (this.props.reportsState.statusCreate === 'FAILURE') {
+        Alert.alert(
+          'Create report failure',
+          'Please try again.',
+        );
+        this.props.reportsActions.resetStatus();
+      }
+    }, 1);
   }
 
   setTitle = (title) => {
@@ -33,6 +54,15 @@ class CreateReport extends Component {
       report: {
         ...this.state.report,
         title,
+      },
+    });
+  }
+
+  setVictimQuantity = (victimsQuantity) => {
+    this.setState({
+      report: {
+        ...this.state.report,
+        victimsQuantity,
       },
     });
   }
@@ -60,7 +90,17 @@ class CreateReport extends Component {
       if (this.state.report.report !== '') {
         if (this.state.report.place !== '') {
           if (this.state.report.img !== '') {
-            this.props.reportsActions.reportCreate(this.state.report);
+            if (this.state.report.victimsQuantity !== '') {
+              const report = {
+                title: this.state.report.title,
+                officer_id: this.props.loginState.login._id,
+                report: this.state.report.report,
+                place: this.state.report.place,
+                img: this.state.report.img.base64,
+                victimsQuantity: this.state.report.victimsQuantity,
+              };
+              this.props.reportsActions.reportCreate(report);
+            }
           }
         }
       }
@@ -81,7 +121,10 @@ class CreateReport extends Component {
         <StatusBar barStyle="light-content" backgroundColor={colors.green} />
         <ScrollView contentContainerStyle={styles.form}>
           <TouchableOpacity style={styles.insertImage} onPress={this.camera}>
-            <Text style={styles.insertImageText}>{this.state.report.img ? this.state.report.img.uri : 'Insert Image'}</Text>
+            {!this.state.thereIsImage
+              ? <Text style={styles.insertImageText}>Insert a Image</Text>
+              : <Image style={styles.image} source={{ uri: this.state.report.img.uri }} />
+            }
           </TouchableOpacity>
           <View style={styles.eachForm}>
             <TextInput
@@ -104,6 +147,16 @@ class CreateReport extends Component {
           <View style={styles.eachForm}>
             <TextInput
               style={styles.input}
+              onChangeText={victimQuantity => this.setVictimQuantity(victimQuantity)}
+              value={this.state.report.victimQuantity}
+              placeholder="Victim Quantity"
+              editable={this.state.thereIsImage}
+              keyboardType="numeric"
+            />
+          </View>
+          <View style={styles.eachForm}>
+            <TextInput
+              style={styles.input}
               onChangeText={place => this.setPlace(place)}
               value={this.state.report.place}
               placeholder="Place"
@@ -112,8 +165,8 @@ class CreateReport extends Component {
           </View>
         </ScrollView>
         <TouchableOpacity style={styles.save} onPress={this.createReport}>
-          {this.props.reportsState.status === 'ONGOING'
-            ? <ActivityIndicator size="small" color={colors.black} animating />
+          {this.props.reportsState.statusCreate === 'ONGOING'
+            ? <ActivityIndicator size="small" color={colors.white} animating />
             : <Text style={styles.saveText}>Save</Text>
           }
         </TouchableOpacity>
@@ -132,6 +185,7 @@ CreateReport.navigationOptions = {
 const mapStateToProps = (state) => {
   return {
     reportsState: state.reports,
+    loginState: state.login,
   };
 };
 

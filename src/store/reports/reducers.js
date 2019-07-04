@@ -46,6 +46,7 @@ export const HANDLERS = {
   [Types.REPORTS_REQUEST]: reportsRequest,
   [Types.REPORTS_REQUEST_SUCCESS]: reportsRequestSuccess,
   [Types.REPORTS_REQUEST_FAILURE]: reportsRequestFailure,
+  [Types.RESET_STATUS]: resetStatus,
 };
 
 export default createReducer(INITIAL_STATE, HANDLERS);
