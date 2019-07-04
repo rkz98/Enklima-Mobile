@@ -11,3 +11,12 @@ export function* loginRequest(api, { login }) {
     yield put(Actions.Creators.loginFailure());
   }
 }
+
+export function* loginCreate(api, { login }) {
+  const response = yield call(api.loginCreate, login);
+  if (response.data !== 'ERROR') {
+    yield put(Actions.Creators.loginCreateSuccess(response.data));
+  } else {
+    yield put(Actions.Creators.loginCreateFailure());
+  }
+}

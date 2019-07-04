@@ -21,7 +21,7 @@ export default StyleSheet.create({
   },
   capture: {
     flex: 0,
-    backgroundColor: colors.green,
+    backgroundColor: colors.black_2,
     borderRadius: 20,
     padding: 15,
     paddingHorizontal: 20,
@@ -30,6 +30,6 @@ export default StyleSheet.create({
   },
   buttonText: {
     fontSize: 14,
-    color: colors.white,
+    color: colors.green,
   },
 });

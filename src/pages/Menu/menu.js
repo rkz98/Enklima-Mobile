@@ -23,6 +23,14 @@ class Menu extends Component {
       this.props.navigation.navigate('CreateReport');
     }
 
+    consultReports = () => {
+      this.props.navigation.navigate('ConsultReport');
+    }
+
+    createAccount = () => {
+      this.props.navigation.navigate('CreateAccount');
+    }
+
     render() {
       return (
         <View style={styles.container}>
@@ -31,11 +39,14 @@ class Menu extends Component {
             <Text style={styles.welcomeText}>Hey, {this.props.loginState.login.name}!</Text>
             <Text style={styles.wannaDo}>What you wanna do?</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.buttons}>
+          <TouchableOpacity style={styles.buttons} onPress={this.consultReports}>
             <Text style={styles.buttonsText}>Consult Reports</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.buttons} onPress={this.registerReport}>
             <Text style={styles.buttonsText}>Create Report</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.buttons} onPress={this.createAccount}>
+            <Text style={styles.buttonsText}>Create Account</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.logout} onPress={this.logout}>
             <Text style={styles.logoutText}>Logout</Text>

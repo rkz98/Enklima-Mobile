@@ -6,6 +6,9 @@ const { Types, Creators } = createActions({
   loginRequest: ['login'],
   loginSuccess: ['login'],
   loginFailure: ['error'],
+  loginCreate: ['login'],
+  loginCreateSuccess: ['login'],
+  loginCreateFailure: ['error'],
   logout: null,
   resetStatus: null,
 }, {});
